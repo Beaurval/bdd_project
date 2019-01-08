@@ -5,6 +5,8 @@
  * Date: 07/01/2019
  * Time: 14:34
  */
+
+//création des personnes
 $personne =
     array(
         0=>array("nom" => "berdo","prenom" => "julie","age"=>15),
@@ -25,10 +27,14 @@ $personne =
 );
 
 foreach ($personne as $pers){
+    $flag = 0;
     foreach ($pers as $key=>$value){
-        if ($pers['age'] > 18)
-            echo $key." : ".$value."\n";
+        if ($pers['age'] > 18)  //si personne a + de 18 ans
+            echo $key." : ".$value."\n"; //on affiche
+        else
+            $flag = 1; //sinon gestion affichage
     }
-    echo "\n";
+    if ($flag == 0)
+        echo "\n";
 }
 
