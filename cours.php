@@ -26,7 +26,9 @@ $personne =
 
 foreach ($personne as $pers){
     foreach ($pers as $key=>$value){
-            echo $key." ".$value."\n";
+        if ($pers['age'] > 18)
+            echo $key." : ".$value."\n";
     }
+    echo "\n";
 }
 
