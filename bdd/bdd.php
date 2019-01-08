@@ -14,5 +14,5 @@ catch(Exeption $e){
 }
 $rep = $bdd_pdo->query('Select * from t_personnes');
 while ($data = $rep->fetch()){
-    echo $data['id']." ".$data["pernom"]." ".$data["perprenom"]." ".$data["perage"]."\n";
+    echo $data['id']." ".$data["pernom"]." ".$data["perprenom"]." ".$data["perage"];
 }
