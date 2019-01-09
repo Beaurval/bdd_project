@@ -37,14 +37,7 @@
  * Date: 08/01/2019
  * Time: 14:03
  */
-try {
-    $bdd = 'mysql:host=localhost;dbname=bdd';
-    $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
-    $bdd_pdo = new PDO($bdd, 'root', 'root', $options);
-
-} catch (Exeption $e) {
-    die('Erreur :' . $e->getMessage());
-}
+require_once 'connexion.php';
 
 if (isset($_POST['prenom']) && isset($_POST['nom']) && isset($_POST['age'])) {
     $reqt = $bdd_pdo->prepare('INSERT INTO t_personnes(pernom, perprenom, perage) VALUES(?,?,?);');
@@ -62,12 +55,13 @@ echo "<th>Supprimer</th>";
 echo "</tr>";
 $reqt = $bdd_pdo->query("SELECT * FROM t_personnes");
 while ($data = $reqt->fetch()) {
+    $id = $data["id"];
     echo "<tr class='ligne'>";
     echo "<td>" . $data['pernom'] . "</td>";
     echo "<td>" . $data['perprenom'] . "</td>";
     echo "<td>" . $data['perage'] . "</td>";
-    echo "<td class='lien'><a href=''>modifier</a></td>";
-    echo "<td class='lien'><a href=''>supprimer</a></td>";
+    echo "<td class='lien'><a href='modification.php?id=$id&mode=modif'>modifier</a></td>";
+    echo "<td class='lien'><a href='modification.php?id=$id&mode=supp'>supprimer</a></td>";
     echo "</tr>";
 }
 echo "</table>";
@@ -85,6 +79,5 @@ echo "</table>";
 </script>
 </body>
 </html>
-
 
 
