@@ -79,3 +79,6 @@ tr a{
 tr a:hover{
     text-decoration: underline;
 }
+form input[type=text]{
+    margin-top: 5px;
+}

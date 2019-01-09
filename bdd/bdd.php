@@ -56,11 +56,14 @@ echo "</tr>";
 $reqt = $bdd_pdo->query("SELECT * FROM t_personnes");
 while ($data = $reqt->fetch()) {
     $id = $data["id"];
+    $nom = $data['pernom'];
+    $prenom = $data['perprenom'];
+    $age = $data['perage'];
     echo "<tr class='ligne'>";
-    echo "<td>" . $data['pernom'] . "</td>";
-    echo "<td>" . $data['perprenom'] . "</td>";
-    echo "<td>" . $data['perage'] . "</td>";
-    echo "<td class='lien'><a href='modification.php?id=$id&mode=modif'>modifier</a></td>";
+    echo "<td>$nom</td>";
+    echo "<td>$prenom</td>";
+    echo "<td>$age</td>";
+    echo "<td class='lien'><a href='modification.php?id=$id&mode=modif_input'>modifier</a></td>";
     echo "<td class='lien'><a href='modification.php?id=$id&mode=supp'>supprimer</a></td>";
     echo "</tr>";
 }
